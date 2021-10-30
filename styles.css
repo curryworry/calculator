@@ -69,4 +69,18 @@ button {
 
 body{
     background-color: #fbfbff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#calculator{
+    display: flex;
+    flex-direction: column;
+    width: 500px;
+    margin-top: 200px
+}
+
+#top-row{
+    display: flex;
 }
