@@ -57,3 +57,16 @@ button {
   }
 
 /* CSS Reset Ends Here */
+
+:root {
+    --display-bg-color:#32322F;
+    --digit-bg-color: #646462;
+    --digit-active-color: #C9C9C7;
+    --operator-bg-color: #FFA009;
+    --operator-active-color: #F3790D;
+    --aux-bg-color: #464543;
+  }
+
+body{
+    background-color: #fbfbff;
+}
