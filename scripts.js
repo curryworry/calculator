@@ -24,19 +24,34 @@ clearButton.addEventListener('click',resetCalculator);
 operators.forEach(operator=>operator.addEventListener('click',operatorClicked));
 
 /* Functions */
+
 function digitClicked(e){
     console.log(e);
     if(firstValue>0){
         secondValue = parseInt(e.target.textContent);
-        result = operate(operator,firstValue,secondValue);
+        display.textContent = secondValue;
     }
     else{
         firstValue = parseInt(e.target.textContent);
+        display.textContent = firstValue;
     }
 }
 
+function displayResult(){
+    display.textContent = result;
+}
+
 function operatorClicked(e){
+    if(operator==""||operator=="="){
     operator = e.target.textContent;
+    }
+    else{
+        result = operate(operator,firstValue,secondValue);
+        displayResult();
+        operator = e.target.textContent;
+        firstValue = result;
+        result = 0;
+    }
 }
 
 function resetCalculator(e){
