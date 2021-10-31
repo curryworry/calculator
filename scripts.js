@@ -1,3 +1,39 @@
+/* Global Variables */
+
+let firstValue = 0;
+let secondValue = 0;
+
+/* Query Selectors */
+
+const digits = document.querySelectorAll('.digit');
+
+const clearButton = document.getElementById('clr-button');
+
+const display = document.getElementById('display');
+
+const operators=document.querySelectorAll('.operator');
+
+/* Event Listeners */
+digits.forEach(digit=>
+    digit.addEventListener('click', digitClicked));
+
+clearButton.addEventListener('click',resetCalculator);
+
+operators.forEach(operator=>operator.addEventListener('click',operatorClicked));
+
+/* Functions */
+function digitClicked(e){
+    console.log(e);
+}
+
+function operatorClicked(e){
+    console.log(e);
+}
+
+function resetCalculator(e){
+    display.textContent = "0";
+}
+
 function add(a,b){
     return a + b;
 }
