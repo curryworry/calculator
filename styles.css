@@ -73,12 +73,13 @@ body{
     justify-content: center;
     align-items: center;
     font-family: 'Helvetica', 'Arial', sans-serif;
+    width: 100vw;
 }
 
 #calculator{
     display: flex;
     flex-direction: column;
-    width: 360px;
+    width: 300px;
     margin-top: 20vh;
     border-radius: 10px 10px 10px 10px;
     box-shadow: 1px 1px 12px 2px rgba(0,0,0,0.75);
@@ -88,31 +89,69 @@ body{
     text-align: right;
     background-color: var(--display-bg-color);
     font-size: 40px;
-    color: white;
     font-weight: 100;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
     padding-top: 10%;
     padding-bottom: 2%;
     padding-right: 2%;
+    color: white;
+}
 
+button{
+    color: white;
 }
 
 #top-row{
     display: flex;
     justify-content: center;
-    text-align: center;
-    margin: 0 5px;
+    text-align: center; 
+    width: 100%;
 }
 
-#clr-button{
-    flex: 3;
-    border: 1px solid black;
+#top-row>#clr-button{
+    width: 75%;
     padding: 5px;
 }
 
 #top-right{
-    flex: 1;
-    border: 1px solid black;
     padding: 5px;
+}
+
+#top-row>button{
+    width: 25%;
+}
+
+button{
+    background-color: var(--digit-bg-color);
+}
+
+.operator{
+    background-color: var(--operator-bg-color);
+}
+
+#mid-rows{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+#mid-rows>button{
+    width: 25%;
+}
+
+.digit{
+    padding: 5px;
+}
+
+#bottom-row{
+    display: flex;
+}
+
+#bottom-row>.digit{
+    width: 75%;
+    padding: 5px;
+}
+
+#bottom-row>.operator{
+    width: 25%;
 }
