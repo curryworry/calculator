@@ -42,8 +42,15 @@ function displayResult(){
 }
 
 function operatorClicked(e){
-    if(operator==""||operator=="="){
-    operator = e.target.textContent;
+    if(operator==""){
+        operator = e.target.textContent;
+    }
+    else if(operator=="="){
+        displayResult();
+        operator = "";
+        firstValue = 0;
+        secondValue = 0;
+        result = 0;
     }
     else{
         result = operate(operator,firstValue,secondValue);
@@ -56,6 +63,10 @@ function operatorClicked(e){
 
 function resetCalculator(e){
     display.textContent = "0";
+    firstValue = 0;
+    secondValue = 0;
+    result = 0;
+    operator = "";
 }
 
 function add(a,b){
