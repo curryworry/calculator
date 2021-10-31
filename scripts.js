@@ -2,6 +2,8 @@
 
 let firstValue = 0;
 let secondValue = 0;
+let operator = "";
+let result = 0;
 
 /* Query Selectors */
 
@@ -24,10 +26,17 @@ operators.forEach(operator=>operator.addEventListener('click',operatorClicked));
 /* Functions */
 function digitClicked(e){
     console.log(e);
+    if(firstValue>0){
+        secondValue = parseInt(e.target.textContent);
+        result = operate(operator,firstValue,secondValue);
+    }
+    else{
+        firstValue = parseInt(e.target.textContent);
+    }
 }
 
 function operatorClicked(e){
-    console.log(e);
+    operator = e.target.textContent;
 }
 
 function resetCalculator(e){
@@ -53,16 +62,16 @@ function divide(a,b){
 function operate(operator,a,b){
     switch(operator){
         case '+':
-            add(a,b);
+            return add(a,b);
             break;
         case '-':
-            subtract(a,b);
+            return subtract(a,b);
             break;
         case '*':
-            multiply(a,b);
+            return multiply(a,b);
             break;
         case '/':
-            divide(a,b);
+            return divide(a,b);
             break;
         default:
             console.log('Invalid operator');
