@@ -52,23 +52,17 @@ function displayResult(){
 function operatorClicked(e){
     if(operator==""){
         operator = e.target.textContent;
-        firstValue = display.textContent;
+        firstValue = parseInt(display.textContent);
         clearScreen = true;
-        //display.textContent = "";
-    }
-    else if(operator=="="){
-        displayResult();
-        operator = "";
-        firstValue = 0;
-        secondValue = 0;
-        result = 0;
     }
     else{
+        secondValue = parseInt(display.textContent);
         result = operate(operator,firstValue,secondValue);
         displayResult();
         operator = e.target.textContent;
         firstValue = result;
         result = 0;
+        clearScreen = true;
     }
 }
 
