@@ -4,6 +4,7 @@ let firstValue = 0;
 let secondValue = 0;
 let operator = "";
 let result = 0;
+let clearScreen = false;
 
 /* Query Selectors */
 
@@ -26,15 +27,22 @@ operators.forEach(operator=>operator.addEventListener('click',operatorClicked));
 /* Functions */
 
 function digitClicked(e){
-    console.log(e);
-    if(firstValue>0){
+    /*if(firstValue>0){
         secondValue = parseInt(e.target.textContent);
         display.textContent = secondValue;
     }
     else{
-        firstValue = parseInt(e.target.textContent);
-        display.textContent = firstValue;
+        //firstValue = parseInt(e.target.textContent);
+        display.textContent += e.target.textContent;
+    }*/
+    if(display.textContent=="0"){
+        display.textContent="";
     }
+    if(clearScreen == true){
+        display.textContent="";
+        clearScreen = false;
+    }
+    display.textContent += e.target.textContent; 
 }
 
 function displayResult(){
@@ -44,6 +52,9 @@ function displayResult(){
 function operatorClicked(e){
     if(operator==""){
         operator = e.target.textContent;
+        firstValue = display.textContent;
+        clearScreen = true;
+        //display.textContent = "";
     }
     else if(operator=="="){
         displayResult();
