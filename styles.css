@@ -127,8 +127,16 @@ button{
     background-color: var(--digit-bg-color);
 }
 
+button:active{
+    background-color: var(--digit-active-color);
+}
+
 .operator{
     background-color: var(--operator-bg-color);
+}
+
+.operator:active{
+    background-color: var(--operator-active-color);
 }
 
 #mid-rows{
