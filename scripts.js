@@ -5,6 +5,7 @@ let secondValue = 0;
 let operator = "";
 let result = 0;
 let clearScreen = false;
+let lastClick = "";
 
 /* Query Selectors */
 
@@ -16,6 +17,8 @@ const display = document.getElementById('display');
 
 const operators=document.querySelectorAll('.operator');
 
+const allElements = document.querySelector('*');
+
 /* Event Listeners */
 digits.forEach(digit=>
     digit.addEventListener('click', digitClicked));
@@ -23,6 +26,10 @@ digits.forEach(digit=>
 clearButton.addEventListener('click',resetCalculator);
 
 operators.forEach(operator=>operator.addEventListener('click',operatorClicked));
+
+allElements.addEventListener('click',(e)=>{
+    lastClick = e.target.classList.value;
+})
 
 /* Functions */
 
@@ -35,10 +42,9 @@ function digitClicked(e){
         //firstValue = parseInt(e.target.textContent);
         display.textContent += e.target.textContent;
     }*/
-    if(display.textContent=="0")//||operator=="=")
+    if(display.textContent=="0")
     {
         display.textContent="";
-        //operator="";
     }
     if(clearScreen == true){
         display.textContent="";
@@ -52,7 +58,7 @@ function displayResult(){
 }
 
 function operatorClicked(e){
-    if(operator==""||operator=="="){
+    if(operator==""||operator=="="||lastClick=="operator"){
         operator = e.target.textContent;
         firstValue = parseInt(display.textContent);
         clearScreen = true;
