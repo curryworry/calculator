@@ -66,6 +66,7 @@ function operatorClicked(e){
     else{
         secondValue = parseInt(display.textContent);
         result = operate(operator,firstValue,secondValue);
+        result = Math.round((result + Number.EPSILON) * 10000) / 10000;
         displayResult();
         operator = e.target.textContent;
         firstValue = result;
