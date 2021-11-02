@@ -69,6 +69,9 @@ function displayResult(){
     if(display.textContent.length>15){
         displayRestartMessage();
     }
+    else if(isNaN(result)){
+        display.textContent="Don't be mean. CLEAR to restart";
+    }
 }
 
 function operatorClicked(e){
