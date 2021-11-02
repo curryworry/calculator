@@ -21,6 +21,8 @@ const allElements = document.querySelector('*');
 
 const decimalButton = document.getElementById('decimal-btn');
 
+const backspaceButton = document.getElementById('backspace');
+
 /* Event Listeners */
 digits.forEach(digit=>
     digit.addEventListener('click', digitClicked));
@@ -33,17 +35,11 @@ allElements.addEventListener('click',(e)=>{
     lastClick = e.target.classList.value;
 })
 
+backspaceButton.addEventListener('click',backspaceClicked);
+
 /* Functions */
 
 function digitClicked(e){
-    /*if(firstValue>0){
-        secondValue = parseInt(e.target.textContent);
-        display.textContent = secondValue;
-    }
-    else{
-        //firstValue = parseInt(e.target.textContent);
-        display.textContent += e.target.textContent;
-    }*/
     if(display.textContent=="0")
     {
         display.textContent="";
@@ -144,5 +140,12 @@ function operate(operator,a,b){
             break;
         default:
             console.log('Invalid operator');
+    }
+}
+
+function backspaceClicked(e){
+    let str = display.textContent;
+    if(str!=="0"){
+    display.textContent = str.substring(0, str.length - 1);
     }
 }
