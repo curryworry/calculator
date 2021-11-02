@@ -171,3 +171,7 @@ button:active{
 #bottom-row>.operator{
     width: 25%;
 }
+
+#decimal-btn:disabled{
+    color: var(--digit-bg-color);
+}

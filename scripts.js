@@ -19,6 +19,8 @@ const operators=document.querySelectorAll('.operator');
 
 const allElements = document.querySelector('*');
 
+const decimalButton = document.getElementById('decimal-btn');
+
 /* Event Listeners */
 digits.forEach(digit=>
     digit.addEventListener('click', digitClicked));
@@ -57,7 +59,9 @@ function digitClicked(e){
     if(display.textContent.length>15){
         displayRestartMessage();
     }
-    
+    if(display.textContent.includes(".")){
+        decimalButton.disabled = true;
+    }
 }
 
 function displayRestartMessage(){
@@ -72,16 +76,17 @@ function displayResult(){
 }
 
 function operatorClicked(e){
+    decimalButton.disabled = false;
     if(display.textContent.includes("restart")){
         displayRestartMessage();
     }
     if(operator==""||operator=="="||lastClick=="operator"){
         operator = e.target.textContent;
-        firstValue = parseInt(display.textContent);
+        firstValue = parseFloat(display.textContent);
         clearScreen = true;
     }
     else{
-        secondValue = parseInt(display.textContent);
+        secondValue = parseFloat(display.textContent);
         result = operate(operator,firstValue,secondValue);
         result = Math.round((result + Number.EPSILON) * 10000) / 10000; //rounds to 4 decimal places
         displayResult();
@@ -98,6 +103,8 @@ function resetCalculator(e){
     secondValue = 0;
     result = 0;
     operator = "";
+    decimalButton.disabled = false;
+    clearScreen = false;
 }
 
 function add(a,b){
