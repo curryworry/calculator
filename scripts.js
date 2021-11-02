@@ -40,6 +40,11 @@ backspaceButton.addEventListener('click',backspaceClicked);
 /* Functions */
 
 function digitClicked(e){
+    let clickedDigit = e.target.textContent;
+    digitCaptured(clickedDigit);
+}
+
+function digitCaptured(e){
     if(display.textContent=="0")
     {
         display.textContent="";
@@ -51,7 +56,7 @@ function digitClicked(e){
     if(firstValue.toString().length>15||isNaN(firstValue)){
         displayRestartMessage();
     }
-    display.textContent += e.target.textContent; 
+    display.textContent += e; 
     if(display.textContent.length>15){
         displayRestartMessage();
     }
