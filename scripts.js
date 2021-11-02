@@ -37,11 +37,33 @@ allElements.addEventListener('click',(e)=>{
 
 backspaceButton.addEventListener('click',backspaceClicked);
 
+document.addEventListener('keydown',keyPressed);
+
 /* Functions */
+
+function keyPressed(e){
+    console.log(e.key);
+    let digitKeys=['1','2','3','4','5','6','7','8','9','0','.'];
+    let operators=['+','-','*','x','/',"=","Enter"];
+    if(digitKeys.includes(e.key)){
+        digitCaptured(e.key);
+    }
+    if(operators.includes(e.key)){
+        operatorCaptured(e.key);
+    }
+    if(e.key=="Backspace"){
+        backspaceClicked(e.key);
+    }
+}
 
 function digitClicked(e){
     let clickedDigit = e.target.textContent;
     digitCaptured(clickedDigit);
+}
+
+function operatorClicked(e){
+    let clickedOperator = e.target.textContent;
+    operatorCaptured(clickedOperator);
 }
 
 function digitCaptured(e){
@@ -79,13 +101,13 @@ function displayResult(){
     }
 }
 
-function operatorClicked(e){
+function operatorCaptured(e){
     decimalButton.disabled = false;
     if(display.textContent.includes("restart")){
         displayRestartMessage();
     }
-    if(operator==""||operator=="="||lastClick=="operator"){
-        operator = e.target.textContent;
+    if(operator==""||operator=="="||lastClick=="operator"||operator=="Enter"){
+        operator = e;
         firstValue = parseFloat(display.textContent);
         clearScreen = true;
     }
@@ -94,7 +116,7 @@ function operatorClicked(e){
         result = operate(operator,firstValue,secondValue);
         result = Math.round((result + Number.EPSILON) * 10000) / 10000; //rounds to 4 decimal places
         displayResult();
-        operator = e.target.textContent;
+        operator = e;
         firstValue = result;
         result = 0;
         clearScreen = true;
@@ -141,6 +163,9 @@ function operate(operator,a,b){
             return subtract(a,b);
             break;
         case 'x':
+            return multiply(a,b);
+            break;
+        case '*':
             return multiply(a,b);
             break;
         case '/':
