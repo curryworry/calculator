@@ -35,8 +35,10 @@ function digitClicked(e){
         //firstValue = parseInt(e.target.textContent);
         display.textContent += e.target.textContent;
     }*/
-    if(display.textContent=="0"){
+    if(display.textContent=="0")//||operator=="=")
+    {
         display.textContent="";
+        //operator="";
     }
     if(clearScreen == true){
         display.textContent="";
@@ -50,7 +52,7 @@ function displayResult(){
 }
 
 function operatorClicked(e){
-    if(operator==""){
+    if(operator==""||operator=="="){
         operator = e.target.textContent;
         firstValue = parseInt(display.textContent);
         clearScreen = true;
@@ -98,7 +100,7 @@ function operate(operator,a,b){
         case '-':
             return subtract(a,b);
             break;
-        case '*':
+        case 'x':
             return multiply(a,b);
             break;
         case '/':
