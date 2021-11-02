@@ -158,8 +158,13 @@ button:active{
     display: flex;
 }
 
+
 #bottom-row>.digit{
-    width: 75%;
+    width: 25%;
+}
+
+#bottom-row>#zero-btn{
+    width: 50%;
     padding: 5px;
 }
 
